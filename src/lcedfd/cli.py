@@ -6,12 +6,11 @@ from . import *
 
 
 def get_version():
-    return f"lcedfd version {VERSION} ({GIT_HASH} {COMP_DATE})"
-
+    return f"{PACKAGE_NAME} version {VERSION} ({GIT_HASH} {COMP_DATE})"
 
 def main(argv=None) -> None:
     con = sqlite3.connect(DATA_DB)
-    parser = argparse.ArgumentParser(description="Search lceds database")
+    parser = argparse.ArgumentParser(description=DESCRIPTION)
 
     parser.add_argument("query", nargs="?", help="Search text/id/link (inferred)")
 

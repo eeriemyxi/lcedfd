@@ -1,5 +1,6 @@
 [project]
 name = "lcedfd"
+description = "Find editorials for LeetCode questions without an acccount"
 dynamic = ["version"]
 readme = "README.md"
 authors = [
