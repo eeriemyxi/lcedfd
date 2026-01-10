@@ -41,10 +41,8 @@ def initialize(root, version, build_data):
 
     data_list = list(cleanup(process(raw.getvalue())))
 
-    # --- write JSON ---
     (out / "data.json").write_text(json.dumps(data_list))
 
-    # --- write SQLite ---
     con = sqlite3.connect(out / "data.db")
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS lceds;")

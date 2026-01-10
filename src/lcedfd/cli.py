@@ -3,6 +3,8 @@ import sqlite3
 import webbrowser
 from importlib.resources import files
 
+from . import COMP_DATE, GIT_HASH, VERSION
+
 data_db = files("lcedfd.data") / "data.db"
 con = sqlite3.connect(data_db)
 
@@ -35,6 +37,10 @@ def format_row(row):
     return "\n".join(f"{k:>8}: {v}" for k, v in zip(("id", "name", "link"), row))
 
 
+def get_version():
+    return f"lcedfd version {VERSION} ({GIT_HASH} {COMP_DATE})"
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(description="Search lceds database")
 
@@ -50,6 +56,12 @@ def main(argv=None) -> None:
         action=argparse.BooleanOptionalAction,
         default=True,
         help="Open the first result in a web browser (default: on)",
+    )
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=get_version(),
     )
 
     args = parser.parse_args(argv)

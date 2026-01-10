@@ -11,8 +11,8 @@ def initialize(root, version, build_data):
     def _git(cmd):
         return subprocess.check_output(cmd).decode().strip()
 
-    def _format(name, value):
-        return f"{name} = {value!r}"
+    def _format(name, value, newline=True):
+        return f"{name} = {value!r}" + "\n" if newline else ""
 
     with open(out / "_version.py", "w") as file:
         file.write(
