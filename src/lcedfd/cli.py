@@ -55,7 +55,7 @@ def main(argv=None) -> None:
         "--open",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Open the first result in a web browser (default: on)",
+        help="Open the first result in a web browser",
     )
 
     parser.add_argument(

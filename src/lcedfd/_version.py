@@ -1,3 +1,0 @@
-COMP_DATE = '2026-01-10T12:03:02Z'
-GIT_HASH = '7ce73a4'
-VERSION = '7ce73a4-dirty'

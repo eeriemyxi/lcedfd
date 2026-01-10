@@ -10,3 +10,4 @@ wheels/
 .venv
 
 src/lcedfd/data/*
+src/lcedfd/_version.py
