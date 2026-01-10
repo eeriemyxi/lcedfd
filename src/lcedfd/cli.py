@@ -24,7 +24,7 @@ def main(argv=None) -> None:
         "--no-open",
         action="store_true",
         help="Do not open the first result in a web browser",
-)
+    )
 
     parser.add_argument(
         "--version",
@@ -60,7 +60,7 @@ def main(argv=None) -> None:
     if args.query.isdigit():
         find_id(args.query)
         return
-    
+
     link = match_link(args.query)
     if link:
         print(f"INFO: detected LeetCode link, parsing it as: {link['name']!r}")

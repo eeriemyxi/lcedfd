@@ -1,9 +1,13 @@
-from ._version import *
-from importlib.resources import files
 import re
+from importlib.resources import files
+
+from ._version import *
 
 DATA_DB = files("lcedfd.data") / "data.db"
-RE_LC_LINK = re.compile(r"https?:\/\/leetcode.com\/problems\/(?P<name>[a-z,A-Z,\-]+)\/?")
+RE_LC_LINK = re.compile(
+    r"https?:\/\/leetcode.com\/problems\/(?P<name>[a-z,A-Z,\-]+)\/?"
+)
+
 
 def find_matches_like(con, query: str):
     cur = con.cursor()
@@ -31,6 +35,7 @@ def format_row(row):
         return "No result"
 
     return "\n".join(f"{k:>8}: {v}" for k, v in zip(("id", "name", "link"), row))
+
 
 def match_link(text: str):
     return RE_LC_LINK.match(text)
