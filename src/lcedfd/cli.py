@@ -28,6 +28,8 @@ def main(argv=None) -> None:
 
     parser.add_argument(
         "--version",
+        "-V",
+        "-v",
         action="version",
         version=get_version(),
     )

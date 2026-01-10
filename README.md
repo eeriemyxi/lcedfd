@@ -76,17 +76,16 @@ pip install .
 # Command-line Arguments
 ```
 sh-5.3$ lcedfd --help
-usage: lcedfd [-h] [--by-id BY_ID] [-o | --open | --no-open] [--version] [query]
+usage: lcedfd [-h] [--by-id BY_ID] [-N] [--version] [query]
 
 Search lceds database
 
 positional arguments:
-  query                 Search text/id/link (inferred)
+  query              Search text/id/link (inferred)
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --by-id BY_ID         Find a single entry by ID (overrides query)
-  -o, --open, --no-open
-                        Open the first result in a web browser (default: True)
-  --version             show program's version number and exit
+  -h, --help         show this help message and exit
+  --by-id BY_ID      Find a single entry by ID (overrides query)
+  -N, --no-open      Do not open the first result in a web browser
+  --version, -V, -v  show program's version number and exit
 ```
