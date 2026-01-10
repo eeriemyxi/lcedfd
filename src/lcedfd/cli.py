@@ -13,7 +13,7 @@ def main(argv=None) -> None:
     con = sqlite3.connect(DATA_DB)
     parser = argparse.ArgumentParser(description="Search lceds database")
 
-    parser.add_argument("query", nargs="?", help="Search text/id (inferred)")
+    parser.add_argument("query", nargs="?", help="Search text/id/link (inferred)")
 
     parser.add_argument(
         "--by-id", type=int, help="Find a single entry by ID (overrides query)"
@@ -59,6 +59,11 @@ def main(argv=None) -> None:
     if args.query.isdigit():
         find_id(args.query)
         return
+    
+    link = match_link(args.query)
+    if link:
+        print(f"INFO: Detected LeetCode link, parsing it as: {link['name']!r}")
+        args.query = link["name"]
 
     rows = find_matches_like(con, args.query)
     if not rows:

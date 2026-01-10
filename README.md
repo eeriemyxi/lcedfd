@@ -28,6 +28,23 @@ sh-5.3$ lcedfd --no-open Stack
 By default it will automatically open the first result on your default web browser. You can disable that with `--no-open` flag.
 
 ```yaml
+sh-5.3$ lcedfd https://leetcode.com/problems/unique-paths/
+INFO: Detected LeetCode link, parsing it as: 'unique-paths'
+      id: 62
+    name: Unique Paths
+    link: https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/062.%20Unique%20Paths.png
+      id: 63
+    name: Unique Paths II
+    link: https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/063.%20Unique%20Paths%20II.png
+      id: 980
+    name: Unique Paths III
+    link: https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/980.%20Unique%20Paths%20III.png
+INFO: Opened link='https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/062.%20Unique%20Paths.png' in your browser
+```
+LeetCode links are also accepted.
+
+
+```yaml
 sh-5.3$ lcedfd 98
       id: 98
     name: Validate Binary Search Tree
@@ -60,12 +77,12 @@ usage: lcedfd [-h] [--by-id BY_ID] [-o | --open | --no-open] [--version] [query]
 Search lceds database
 
 positional arguments:
-  query                 Search text/id (inferred)
+  query                 Search text/id/link (inferred)
 
 optional arguments:
   -h, --help            show this help message and exit
   --by-id BY_ID         Find a single entry by ID (overrides query)
   -o, --open, --no-open
-                        Open the first result in a web browser (default: on)
+                        Open the first result in a web browser (default: True)
   --version             show program's version number and exit
 ```
