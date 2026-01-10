@@ -1,10 +1,10 @@
 # Lcedfd
 Short for Leetcode Editorial Finder.
 
-This project uses data from
+This program uses data from the
 [leetcode-screenshotter](https://github.com/akhilkammila/leetcode-screenshotter)
-project to provide an ease-of-use program that you can utilize find editorials
-of LeetCode questions with ease.
+project to facilitate ease of use in finding editorials for LeetCode questions
+without an account.
 
 # Examples
 ```yaml
@@ -25,7 +25,9 @@ sh-5.3$ lcedfd --no-open Stack
     name: Implement Stack using Queues
     link: https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/225.%20Implement%20Stack%20using%20Queues.png
 ```
-By default it will automatically open the first result on your default web browser. You can disable that with `--no-open` flag.
+
+By default it will automatically open the first result on your default web
+browser. You can disable that with `--no-open` flag.
 
 ```yaml
 sh-5.3$ lcedfd https://leetcode.com/problems/unique-paths/
@@ -52,7 +54,9 @@ sh-5.3$ lcedfd 98
 INFO: Opened link='https://github.com/akhilkammila/leetcode-screenshotter/tree/main/editorial-screenshots/1-999/098.%20Validate%20Binary%20Search%20Tree.png' in your browser
 sh-5.3$ Opening in existing browser session.
 ```
-Natural number inputs are inferred as ID. You can also try `--by-id` flag to expicitly use the ID searcher.
+
+Natural number inputs are inferred as ID. You can also try `--by-id` flag to
+explicitly use the ID searcher.
 
 # Installation
 > [!IMPORTANT]
