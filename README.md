@@ -27,7 +27,7 @@ sh-5.3$ lcedfd --no-open Stack
 ```
 
 By default it will automatically open the first result on your default web
-browser. You can disable that with `--no-open` flag.
+browser. You can disable that with `-N` or `--no-open` flag.
 
 ```yaml
 sh-5.3$ lcedfd https://leetcode.com/problems/unique-paths/

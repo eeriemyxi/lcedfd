@@ -20,12 +20,11 @@ def main(argv=None) -> None:
     )
 
     parser.add_argument(
-        "-o",
-        "--open",
-        action=argparse.BooleanOptionalAction,
-        default=True,
-        help="Open the first result in a web browser",
-    )
+        "-N",
+        "--no-open",
+        action="store_true",
+        help="Do not open the first result in a web browser",
+)
 
     parser.add_argument(
         "--version",
@@ -36,9 +35,9 @@ def main(argv=None) -> None:
     args = parser.parse_args(argv)
 
     def open_if_needed(row):
-        if args.open and row is not None:
+        if not args.no_open and row is not None:
             link = row[2]
-            print(f"INFO: Opened {link=} in your browser")
+            print(f"INFO: opened {link=} in your browser")
             webbrowser.open(link, autoraise=True, new=2)
 
     def find_id(id_):
@@ -62,7 +61,7 @@ def main(argv=None) -> None:
     
     link = match_link(args.query)
     if link:
-        print(f"INFO: Detected LeetCode link, parsing it as: {link['name']!r}")
+        print(f"INFO: detected LeetCode link, parsing it as: {link['name']!r}")
         args.query = link["name"]
 
     rows = find_matches_like(con, args.query)
