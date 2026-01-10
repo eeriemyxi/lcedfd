@@ -1,40 +1,8 @@
 import argparse
 import sqlite3
 import webbrowser
-from importlib.resources import files
 
-from . import COMP_DATE, GIT_HASH, VERSION
-
-data_db = files("lcedfd.data") / "data.db"
-con = sqlite3.connect(data_db)
-
-
-def find_matches_like(query: str):
-    cur = con.cursor()
-    cur.execute(
-        """
-        SELECT lceds.*
-        FROM lceds_fts
-        JOIN lceds ON lceds.id = lceds_fts.rowid
-        WHERE lceds_fts MATCH ?
-        ORDER BY rank;
-    """,
-        (f'"{query}"',),
-    )
-    return cur.fetchall()
-
-
-def find_by_id(id: int):
-    cur = con.cursor()
-    cur.execute("SELECT * FROM lceds WHERE id = ?;", [id])
-    return cur.fetchone()
-
-
-def format_row(row):
-    if row is None:
-        return "No result"
-
-    return "\n".join(f"{k:>8}: {v}" for k, v in zip(("id", "name", "link"), row))
+from . import *
 
 
 def get_version():
@@ -42,6 +10,7 @@ def get_version():
 
 
 def main(argv=None) -> None:
+    con = sqlite3.connect(DATA_DB)
     parser = argparse.ArgumentParser(description="Search lceds database")
 
     parser.add_argument("query", nargs="?", help="Search text/id (inferred)")
@@ -73,7 +42,7 @@ def main(argv=None) -> None:
             webbrowser.open(link, autoraise=True, new=2)
 
     def find_id(id_):
-        row = find_by_id(int(id_))
+        row = find_by_id(con, int(id_))
         if row is None:
             print("ERROR: no result found")
             return
@@ -91,7 +60,7 @@ def main(argv=None) -> None:
         find_id(args.query)
         return
 
-    rows = find_matches_like(args.query)
+    rows = find_matches_like(con, args.query)
     if not rows:
         print("ERROR: no results found")
         return
