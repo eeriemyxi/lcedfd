@@ -12,6 +12,7 @@ def initialize(root, version, build_data):
     assets = root / "assets"
     out = root / "src" / PACKAGE_NAME / "data"
     out.mkdir(parents=True, exist_ok=True)
+    (out / "__init__.py").touch() # fails without it
 
     def process(data: str):
         for match in RE_LINK.finditer(data):
