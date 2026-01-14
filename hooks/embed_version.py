@@ -9,7 +9,8 @@ def initialize(root, version, build_data):
     out = root / "src" / PACKAGE_NAME
 
     def _git(cmd):
-        return subprocess.check_output(cmd).decode().strip()
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        return result.stdout.strip()
 
     def _format(name, value, newline=True):
         return f"{name} = {value!r}" + "\n" if newline else ""

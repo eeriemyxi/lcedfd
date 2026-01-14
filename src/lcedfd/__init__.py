@@ -1,6 +1,6 @@
 import re
-from importlib.resources import files
 from importlib.metadata import metadata
+from importlib.resources import files
 
 from ._version import *
 
@@ -11,6 +11,7 @@ DATA_DB = files(f"{PACKAGE_NAME}.data") / "data.db"
 RE_LC_LINK = re.compile(
     r"https?:\/\/leetcode.com\/problems\/(?P<name>[a-z,A-Z,\-]+)\/?"
 )
+
 
 def find_matches_like(con, query: str):
     cur = con.cursor()
